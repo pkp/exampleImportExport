@@ -2,14 +2,14 @@
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <!--
-  * locale.xml
-  *
-  * Copyright (c) 2014-2019 Simon Fraser University
-  * Copyright (c) 2003-2019 John Willinsky
-  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
-  * Localization information: https://pkp.sfu.ca/wiki/index.php?title=Translating_OxS
-  * Localization strings.
-  -->
+	* locale.xml
+	*
+	* Copyright (c) 2014-2019 Simon Fraser University
+	* Copyright (c) 2003-2019 John Willinsky
+	* Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+	* Localization information: https://pkp.sfu.ca/wiki/index.php?title=Translating_OxS
+	* Localization strings.
+	-->
 
 <locale name="en_US" full_name="U.S. English">
 	<message key="plugins.importexport.exampleImportExport.name">Example Import/Export Plugin</message>
@@ -17,5 +17,5 @@
 	<message key="plugins.importexport.exampleImportExport.id">ID</message>
 	<message key="plugins.importexport.exampleImportExport.title">Title</message>
 	<message key="plugins.importexport.exampleImportExport.exportAll">Export All</message>
-  <message key="plugins.importexport.exampleImportExport.cliUsage"><![CDATA[Usage: {$scriptName} {$pluginName} [csvFileName] [journalId]]]></message>
+	<message key="plugins.importexport.exampleImportExport.cliUsage"><![CDATA[Usage: {$scriptName} {$pluginName} [csvFileName] [journalId]]]></message>
 </locale>

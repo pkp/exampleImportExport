@@ -10,24 +10,24 @@
 {include file="common/header.tpl" pageTitle="plugins.importexport.exampleImportExport.name"}
 
 <table class="pkpTable">
-  <thead>
-    <tr>
-      <th>{translate key="plugins.importexport.exampleImportExport.id"}</th>
-      <th>{translate key="plugins.importexport.exampleImportExport.title"}</th>
-    </tr>
-  </thead>
-  <tbody>
-    {foreach $publications as $publication}
-      <tr>
-        <td>{$publication->getId()}</td>
-        <td>{$publication->getLocalizedTitle()}</td>
-      </tr>
-    {/foreach}
-  </tbody>
+	<thead>
+		<tr>
+			<th>{translate key="plugins.importexport.exampleImportExport.id"}</th>
+			<th>{translate key="plugins.importexport.exampleImportExport.title"}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach $publications as $publication}
+			<tr>
+				<td>{$publication->getId()}</td>
+				<td>{$publication->getLocalizedTitle()}</td>
+			</tr>
+		{/foreach}
+	</tbody>
 </table>
 
 <form method="POST" action="{plugin_url path="exportAll"}">
-  <button class="pkp_button" type="submit">{translate key="plugins.importexport.exampleImportExport.exportAll"}</button>
+	<button class="pkp_button" type="submit">{translate key="plugins.importexport.exampleImportExport.exportAll"}</button>
 </form>
 
 {include file="common/footer.tpl"}

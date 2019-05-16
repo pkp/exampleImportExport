@@ -17,7 +17,7 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 	 * @copydoc ImportExportPlugin::register()
 	 */
 	public function register($category, $path, $mainContextId = NULL) {
-    $success = parent::register($category, $path);
+		$success = parent::register($category, $path);
 		$this->addLocaleData();
 		return $success;
 	}
@@ -118,10 +118,10 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 	 */
 	public function export($publications, $filename) {
 		$fp = fopen($filename, 'wt');
-    fputcsv($fp, ['ID', 'Title']);
-    foreach ($publications as $publication) {
-      fputcsv($fp, [$publication->getId(), $publication->getLocalizedTitle()]);
-    }
+		fputcsv($fp, ['ID', 'Title']);
+		foreach ($publications as $publication) {
+			fputcsv($fp, [$publication->getId(), $publication->getLocalizedTitle()]);
+		}
 		fclose($fp);
 	}
 }
