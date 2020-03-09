@@ -1,17 +1,17 @@
 <?php
 /**
- * @file plugins/importexport/exampleImportExport/ExampleImportExportPlugin.inc.php
+ * @file ExampleImportExportPlugin.inc.php
  *
- * Copyright (c) 2014-2019 Simon Fraser University
- * Copyright (c) 2003-2019 John Willinsky
- * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+ * Copyright (c) 2014-2020 Simon Fraser University
+ * Copyright (c) 2003-2020 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
  * @class ExampleImportExportPlugin
- * @ingroup plugins_importexport_exampleimportexport
- *
  * @brief An example plugin demonstrating how to write an import/export plugin.
  */
+
 import('lib.pkp.classes.plugins.ImportExportPlugin');
+
 class ExampleImportExportPlugin extends ImportExportPlugin {
 	/**
 	 * @copydoc ImportExportPlugin::register()
@@ -56,7 +56,6 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 		// should be taken.
 		$path = array_shift($args);
 		switch ($path) {
-
 			// Stream a CSV file for download
 			case 'exportAll':
 				header('content-type: text/comma-separated-values');
@@ -101,8 +100,7 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 
 	/**
 	 * A helper method to get all publications for export
-	 *
-	 * @param	int	$contextId Which journal or press to get submissions for
+	 * @param int $contextId Which journal or press to get submissions for
 	 * @return array
 	 */
 	public function getAll($contextId) {
@@ -115,6 +113,8 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 
 	/**
 	 * A helper method to stream all publications to a CSV file
+	 * @param $publications array
+	 * @param $filename string
 	 */
 	public function export($publications, $filename) {
 		$fp = fopen($filename, 'wt');
