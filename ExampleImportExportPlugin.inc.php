@@ -68,7 +68,10 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 			// to export and a button to run the `exportAll` path.
 			default:
 				$templateMgr = TemplateManager::getManager($request);
-				$templateMgr->assign('publications', $this->getAll($contextId));
+				$templateMgr->assign([
+					'pageTitle' => __('plugins.importexport.exampleImportExport.name'),
+					'publications' => $this->getAll($contextId),
+				]);
 				$templateMgr->display($this->getTemplateResource('export.tpl'));
 		}
 	}
@@ -84,8 +87,8 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 			$this->usage('');
 		}
 
-		$publications = $this->getAll($contextId);
-		$this->export($publications, $csvFile);
+		$result = $this->getAll($contextId);
+		$this->export($result, $csvFile);
 	}
 
 	/**
@@ -100,11 +103,12 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 
 	/**
 	 * A helper method to get all publications for export
-	 * @param int $contextId Which journal or press to get submissions for
-	 * @return array
+	 *
+	 * @param	int	$contextId Which journal or press to get submissions for
+	 * @return DAOResultIterator
 	 */
 	public function getAll($contextId) {
-		import('lib.pkp.classes.submission.Submission');
+		import('classes.submission.Submission');
 		return Services::get('submission')->getMany([
 			'contextId' => $contextId,
 			'status' => STATUS_PUBLISHED,
@@ -113,13 +117,14 @@ class ExampleImportExportPlugin extends ImportExportPlugin {
 
 	/**
 	 * A helper method to stream all publications to a CSV file
-	 * @param $publications array
-	 * @param $filename string
+	 *
+	 * @param DAOResultIterator $publications Iterator with publication data
+	 * @param string $filename CSV filename
 	 */
-	public function export($publications, $filename) {
+	public function export($publicationIterator, $filename) {
 		$fp = fopen($filename, 'wt');
 		fputcsv($fp, ['ID', 'Title']);
-		foreach ($publications as $publication) {
+		foreach ($publicationIterator as $publication) {
 			fputcsv($fp, [$publication->getId(), $publication->getLocalizedTitle()]);
 		}
 		fclose($fp);

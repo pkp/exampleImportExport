@@ -7,27 +7,33 @@
  *
  * @brief UI to export publications
  *}
-{include file="common/header.tpl" pageTitle="plugins.importexport.exampleImportExport.name"}
+{extends file="layouts/backend.tpl"}
 
-<table class="pkpTable">
-	<thead>
-		<tr>
-			<th>{translate key="plugins.importexport.exampleImportExport.id"}</th>
-			<th>{translate key="plugins.importexport.exampleImportExport.title"}</th>
-		</tr>
-	</thead>
-	<tbody>
-		{foreach $publications as $publication}
-			<tr>
-				<td>{$publication->getId()}</td>
-				<td>{$publication->getLocalizedTitle()}</td>
-			</tr>
-		{/foreach}
-	</tbody>
-</table>
+{block name="page"}
+	<h1 class="app__pageHeading">
+		{$pageTitle}
+	</h1>
 
-<form method="POST" action="{plugin_url path="exportAll"}">
-	<button class="pkp_button" type="submit">{translate key="plugins.importexport.exampleImportExport.exportAll"}</button>
-</form>
+	<div class="app__contentPanel">
+		<table class="pkpTable">
+			<thead>
+				<tr>
+					<th>{translate key="plugins.importexport.exampleImportExport.id"}</th>
+					<th>{translate key="plugins.importexport.exampleImportExport.title"}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach $publications as $publication}
+					<tr>
+						<td>{$publication->getId()}</td>
+						<td>{$publication->getLocalizedTitle()}</td>
+					</tr>
+				{/foreach}
+			</tbody>
+		</table>
 
-{include file="common/footer.tpl"}
+		<form method="POST" action="{plugin_url path="exportAll"}">
+			<button class="pkp_button" type="submit">{translate key="plugins.importexport.exampleImportExport.exportAll"}</button>
+		</form>
+	</div>
+{/block}
