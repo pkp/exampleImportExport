@@ -5,7 +5,7 @@
  * Copyright (c) 2003-2020 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  *
- * @brief UI to export publications
+ * @brief UI to export published submissions
  *}
 {extends file="layouts/backend.tpl"}
 
@@ -23,10 +23,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				{foreach $publications as $publication}
+				{foreach $submissions as $submission}
 					<tr>
-						<td>{$publication->getId()}</td>
-						<td>{$publication->getLocalizedTitle()}</td>
+						<td>{$submission->getId()}</td>
+						<td>{$submission->getCurrentPublication()->getLocalizedFullTitle()}</td>
 					</tr>
 				{/foreach}
 			</tbody>
